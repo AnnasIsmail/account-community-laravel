@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\Account;
-use App\Helpers\ApiFormatter;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreAccountRequest;
-use App\Http\Requests\UpdateAccountRequest;
+use App\Helpers\ApiFormatter;
+use App\Http\Controllers\Controller;
 
 class AccountController extends Controller
 {
@@ -18,7 +16,6 @@ class AccountController extends Controller
      */
     public function index()
     {
-
         $account = Account::all();
 
         return ApiFormatter::createApi(200, 'Success', $account);
@@ -37,21 +34,12 @@ class AccountController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
-            // $validatedData = $request->validate([
-            //     'riotId' => 'required',
-            //     'tagLine' => 'required',
-            //     'username' => 'required',
-            //     'password' => 'required',
-            //     'owner' => 'required',
-            // ]);
-
-            // Account::create([
+            //     Account::create([
             //     'riotId' => $request->riotId,
             //     'tagLine' => $request->tagLine,
             //     'slug' => $request->slug,
@@ -60,20 +48,21 @@ class AccountController extends Controller
             //     'owner' => $request->owner,
             // ]);
 
+            return [$request->username];
+
             Account::create([$request]);
 
+
             return ApiFormatter::createApi(200, 'Success', $validatedData);
-
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Account  $account
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Account $account)
+    public function show($id)
     {
         //
     }
@@ -81,10 +70,10 @@ class AccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Account  $account
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Account $account)
+    public function edit($id)
     {
         //
     }
@@ -92,11 +81,11 @@ class AccountController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAccountRequest  $request
-     * @param  \App\Models\Account  $account
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAccountRequest $request, Account $account)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -104,10 +93,10 @@ class AccountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Account  $account
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Account $account)
+    public function destroy($id)
     {
         //
     }
