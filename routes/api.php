@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Helpers\ApiFormatter;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,10 +17,8 @@ use App\Helpers\ApiFormatter;
 |
 */
 
-Route::get('/coba', function () {
-    return ApiFormatter::createApi(200, 'success', [1,2,3]);
-});
+Route::get('/account', [AccountController::class, 'index']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return ApiFormatter::createApi(200, 'success', [1,2,3]);
+// });
