@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Account;
-use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\Mahasiswa;
+use Exception;
+use Illuminate\Http\Request;
 
-class AccountController extends Controller
+class MahasiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $data = Account::all();
+        $data = Mahasiswa::all();
 
         if($data){
             return ApiFormatter::createApi(200, 'Success', $data);
@@ -46,25 +47,19 @@ class AccountController extends Controller
 
         return $request;
 
-        $request->validate([
-            'riotId' => 'required',
-            'tagLine' => 'required',
-            'slug' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'owner' => 'required',
-        ]);
 
-        $mahasiswa = Account::create([
-            'riotId' => $request->riotId,
-            'tagLine' => $request->tagLine,
-            'slug' => $request->slug,
-            'username' => $request->username,
-            'password' => $request->password,
-            'owner' => $request->owner,
-        ]);
+            $request->validate([
+                'name' => 'required',
+                'address' => 'required',
+            ]);
 
-        return ApiFormatter::createApi(200, 'Success', $mahasiswa);
+            $mahasiswa = Mahasiswa::create([
+                'name' => $request->name,
+                'address' => $request->address
+            ]);
+
+            return ApiFormatter::createApi(200, 'Success', $mahasiswa);
+
     }
 
     /**

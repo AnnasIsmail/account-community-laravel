@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
 use App\Models\User;
 use App\Models\Account;
-use App\Models\AccountAgent;
-use App\Models\AccountSkin;
+use Illuminate\Database\Seeder;
+
+
 
 class DatabaseSeeder extends Seeder
 {

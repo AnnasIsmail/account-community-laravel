@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccountAgentsTable extends Migration
+class CreateMahasiswaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateAccountAgentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('account_agents', function (Blueprint $table) {
+        Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('account_id');
-            $table->string('uuid');
+            $table->string('name');
+            $table->string('address');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateAccountAgentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account_agents');
+        Schema::dropIfExists('mahasiswa');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccountSkinsTable extends Migration
+class CreateAccountAgentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAccountSkinsTable extends Migration
      */
     public function up()
     {
-        Schema::create('account_skins', function (Blueprint $table) {
+        Schema::create('account_agent', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('account_id');
+            $table->string('account_id');
             $table->string('uuid');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateAccountSkinsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account_skins');
+        Schema::dropIfExists('account_agent');
     }
 }

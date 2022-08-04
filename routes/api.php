@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AccountController;
-
+use App\Http\Controllers\API\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +16,12 @@ use App\Http\Controllers\API\AccountController;
 |
 */
 
+Route::get('mahasiswa', [MahasiswaController::class , 'index']);
+Route::post('mahasiswa/store', [MahasiswaController::class , 'store']);
+
 Route::get('account', [AccountController::class , 'index']);
 Route::post('account/store', [AccountController::class , 'store']);
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return ApiFormatter::createApi(200, 'success', [1,2,3]);
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});

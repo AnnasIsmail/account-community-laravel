@@ -4,19 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Account extends Model
+class Mahasiswa extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
-    protected $table = 'accounts';
+    protected $table = 'mahasiswa';
     protected $fillable = [
-        'riotId',
-        'tagLine',
-        'slug',
-        'username',
-        'password',
-        'owner',
+        'name',
+        'address'
     ];
 
     protected $hidden = [];
