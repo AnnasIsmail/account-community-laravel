@@ -16,6 +16,7 @@ class CreateAccountAgentTable extends Migration
         Schema::create('account_agent', function (Blueprint $table) {
             $table->id();
             $table->string('account_id');
+            $table->string('name');
             $table->string('uuid');
             $table->timestamps();
         });

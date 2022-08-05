@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\AccountSkin;
+use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
-use App\Models\Mahasiswa;
-use Exception;
-use Illuminate\Http\Request;
 
-class MahasiswaController extends Controller
+
+class AccountSkinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $data = Mahasiswa::all();
+        $data = AccountSkin::all();
 
         if($data){
             return ApiFormatter::createApi(200, 'Success', $data);
@@ -44,19 +44,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-
-            $request->validate([
-                'name' => 'required',
-                'address' => 'required',
-            ]);
-
-            $mahasiswa = Mahasiswa::create([
-                'name' => $request->name,
-                'address' => $request->address
-            ]);
-
-            return ApiFormatter::createApi(200, 'Success', $mahasiswa);
-
+        //
     }
 
     /**
@@ -67,7 +55,14 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $data = AccountSkin::where('account_id', '=', $id)->get();
+
+        if($data){
+            return ApiFormatter::createApi(200, 'Success', $data);
+        }else{
+            return ApiFormatter::createApi(400, 'Failed');
+        }
     }
 
     /**
