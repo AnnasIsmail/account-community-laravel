@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AccountController;
 use App\Http\Controllers\API\AccountSkinController;
+use App\Http\Controllers\API\AccountAgentController;
 use App\Http\Controllers\API\MahasiswaController;
 
 /*
@@ -26,6 +27,9 @@ Route::post('account/store', [AccountController::class , 'store']);
 Route::get('account/skin', [AccountSkinController::class , 'index']);
 Route::get('account/skin/{id}', [AccountSkinController::class , 'show']);
 Route::post('account/store', [AccountSkinController::class , 'store']);
+
+Route::get('account/agent', [AccountAgentController::class , 'index']);
+Route::get('account/agent/{id}', [AccountAgentController::class , 'show']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

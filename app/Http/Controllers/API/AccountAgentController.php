@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Models\AccountAgent;
 use Illuminate\Http\Request;
+use App\Helpers\ApiFormatter;
+use App\Http\Controllers\Controller;
+
 
 class AccountAgentController extends Controller
 {
@@ -14,7 +17,13 @@ class AccountAgentController extends Controller
      */
     public function index()
     {
-        //
+        $data = AccountAgent::all();
+
+        if($data){
+            return ApiFormatter::createApi(200, 'Success', $data);
+        }else{
+            return ApiFormatter::createApi(400, 'Failed');
+        }
     }
 
     /**
@@ -46,7 +55,14 @@ class AccountAgentController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $data = AccountAgent::where('account_id', '=', $id)->get();
+
+        if($data){
+            return ApiFormatter::createApi(200, 'Success', $data);
+        }else{
+            return ApiFormatter::createApi(400, 'Failed');
+        }
     }
 
     /**
