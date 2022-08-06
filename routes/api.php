@@ -25,8 +25,8 @@ Route::get('account', [AccountController::class , 'index']);
 Route::post('account/store', [AccountController::class , 'store']);
 
 Route::get('account/skin', [AccountSkinController::class , 'index']);
+Route::post('account/skin/store', [AccountController::class , 'store']);
 Route::get('account/skin/{id}', [AccountSkinController::class , 'show']);
-Route::post('account/store', [AccountSkinController::class , 'store']);
 
 Route::get('account/agent', [AccountAgentController::class , 'index']);
 Route::get('account/agent/{id}', [AccountAgentController::class , 'show']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Account;
+use App\Models\AccountSkin;
 use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
@@ -44,27 +45,34 @@ class AccountController extends Controller
     public function store(Request $request)
     {
 
-        return $request;
+        try {
+            //code...
+            $request->validate([
+                'riotId' => 'required',
+                'tagLine' => 'required',
+                'slug' => 'required',
+                'username' => 'required',
+                'password' => 'required',
+                'owner' => 'required',
+            ]);
+    
+            $account = Account::create([
+                'riotId' => $request->riotId,
+                'tagLine' => $request->tagLine,
+                'slug' => $request->slug,
+                'username' => $request->username,
+                'password' => $request->password,
+                'owner' => $request->owner,
+            ]);
 
-        $request->validate([
-            'riotId' => 'required',
-            'tagLine' => 'required',
-            'slug' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'owner' => 'required',
-        ]);
+            return ApiFormatter::createApi(200, 'Success', $account);
 
-        $mahasiswa = Account::create([
-            'riotId' => $request->riotId,
-            'tagLine' => $request->tagLine,
-            'slug' => $request->slug,
-            'username' => $request->username,
-            'password' => $request->password,
-            'owner' => $request->owner,
-        ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return ApiFormatter::createApi(200, 'Failed', $th);
+        }
 
-        return ApiFormatter::createApi(200, 'Success', $mahasiswa);
+
     }
 
     /**

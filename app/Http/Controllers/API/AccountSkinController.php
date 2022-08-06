@@ -44,7 +44,26 @@ class AccountSkinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        try {
+            $request->validate([
+                'account_id' => 'required',
+                'name' => 'required',
+                'uuid' => 'required',
+            ]);
+    
+            $skin = AccountSkin::create([
+                'account_id' => $request->account_id,
+                'name' => $request->name,
+                'uuid' => $request->uuid,
+            ]);
+
+            return ApiFormatter::createApi(200, 'Success', $skin);
+
+        } catch (\Throwable $th) {
+            return ApiFormatter::createApi(400, 'Failed', $th);
+        }
+
     }
 
     /**

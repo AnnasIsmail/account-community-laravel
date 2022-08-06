@@ -81,8 +81,8 @@ class DatabaseSeeder extends Seeder
 
         AccountAgent::create([
             'account_id' => 1,
-            'name' => 'Raze',
-            'uuid' => 'f94c3b30-42be-e959-889c-5aa313dba261'
+            'name' => 'Killjoy',
+            'uuid' => '1e58de9c-4950-5125-93e9-a0aee9f98746'
         ]);
 
     }
