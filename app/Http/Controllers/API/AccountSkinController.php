@@ -6,6 +6,7 @@ use App\Models\AccountSkin;
 use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
+use Exception;
 
 
 class AccountSkinController extends Controller
@@ -44,7 +45,7 @@ class AccountSkinController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         try {
             $request->validate([
                 'account_id' => 'required',
@@ -60,7 +61,7 @@ class AccountSkinController extends Controller
 
             return ApiFormatter::createApi(200, 'Success', $skin);
 
-        } catch (\Throwable $th) {
+        } catch (Exception $th) {
             return ApiFormatter::createApi(400, 'Failed', $th);
         }
 
