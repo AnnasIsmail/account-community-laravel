@@ -114,8 +114,18 @@ class AccountSkinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($account_id)
     {
-        //
+        try {
+    
+            $skin = AccountSkin::where('account_id' , $account_id);
+
+            $skin->delete();
+
+            return ApiFormatter::createApi(200, 'Success Delete All Data');
+
+        } catch (Exception $th) {
+            return ApiFormatter::createApi(400, 'Failed', $th);
+        }
     }
 }

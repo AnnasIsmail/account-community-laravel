@@ -69,7 +69,7 @@ class AccountController extends Controller
 
         } catch (\Throwable $th) {
             //throw $th;
-            return ApiFormatter::createApi(200, 'Failed', $th);
+            return ApiFormatter::createApi(400, 'Failed', $th);
         }
 
 
@@ -106,7 +106,34 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            //code...
+            $request->validate([
+                'riotId' => 'required',
+                'tagLine' => 'required',
+                'slug' => 'required',
+                'username' => 'required',
+                'password' => 'required',
+                'owner' => 'required',
+            ]);
+    
+            $account = Account::findOrFail($id);
+
+            $account->update([
+                'riotId' => $request->riotId,
+                'tagLine' => $request->tagLine,
+                'slug' => $request->slug,
+                'username' => $request->username,
+                'password' => $request->password,
+                'owner' => $request->owner,
+            ]);
+
+            return ApiFormatter::createApi(200, 'Success', $account);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return ApiFormatter::createApi(400, 'Failed', $th);
+        }
     }
 
     /**
@@ -117,6 +144,18 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            //code...
+    
+            $account = Account::findOrFail($id);
+
+            $account->delete();
+
+            return ApiFormatter::createApi(200, 'Success', $account);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return ApiFormatter::createApi(400, 'Failed', $th);
+        }
     }
 }
