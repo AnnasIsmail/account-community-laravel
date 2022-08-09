@@ -22,19 +22,20 @@ Route::get('mahasiswa', [MahasiswaController::class , 'index']);
 Route::post('mahasiswa/store', [MahasiswaController::class , 'store']);
 
 Route::get('account', [AccountController::class , 'index']);
+Route::get('account/{id}', [AccountController::class , 'show']);
 Route::post('account/store', [AccountController::class , 'store']);
 Route::post('account/update/{id}', [AccountController::class , 'update']);
 Route::post('account/destroy/{id}', [AccountController::class , 'destroy']);
 
-Route::get('account/skin', [AccountSkinController::class , 'index']);
-Route::post('account/skin/store', [AccountSkinController::class , 'store']);
-Route::get('account/skin/{id}', [AccountSkinController::class , 'show']);
-Route::post('account/skin/delete/{account_id}', [AccountSkinController::class , 'destroy']);
+Route::get('skin', [AccountSkinController::class , 'index']);
+Route::post('skin/store', [AccountSkinController::class , 'store']);
+Route::get('skin/{id}', [AccountSkinController::class , 'show']);
+Route::post('skin/delete/{account_id}', [AccountSkinController::class , 'destroy']);
 
-Route::get('account/agent', [AccountAgentController::class , 'index']);
-Route::post('account/agent/store', [AccountAgentController::class , 'store']);
-Route::get('account/agent/{id}', [AccountAgentController::class , 'show']);
-Route::post('account/agent/delete/{account_id}', [AccountAgentController::class , 'destroy']);
+Route::get('agent', [AccountAgentController::class , 'index']);
+Route::post('agent/store', [AccountAgentController::class , 'store']);
+Route::get('agent/{id}', [AccountAgentController::class , 'show']);
+Route::post('agent/delete/{account_id}', [AccountAgentController::class , 'destroy']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

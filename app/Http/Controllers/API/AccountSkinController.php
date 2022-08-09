@@ -75,7 +75,6 @@ class AccountSkinController extends Controller
      */
     public function show($id)
     {
-
         $data = AccountSkin::where('account_id', '=', $id)->get();
 
         if($data){
