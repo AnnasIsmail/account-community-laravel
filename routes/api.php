@@ -25,7 +25,7 @@ Route::get('account', [AccountController::class , 'index']);
 Route::get('account/{id}', [AccountController::class , 'show']);
 Route::post('account/store', [AccountController::class , 'store']);
 Route::post('account/update/{id}', [AccountController::class , 'update']);
-Route::post('account/destroy/{id}', [AccountController::class , 'destroy']);
+Route::post('account/delete/{id}', [AccountController::class , 'destroy']);
 
 Route::get('skin', [AccountSkinController::class , 'index']);
 Route::post('skin/store', [AccountSkinController::class , 'store']);
