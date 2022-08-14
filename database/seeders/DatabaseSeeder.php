@@ -22,27 +22,21 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         Account::create([
-            'riotId' => 'LUHUTFORPRESIDEN',
-            'tagLine' => 'NGNTT',
-            'slug' => bcrypt('LUHUTFORPRESIDENNGNTT'),
+            'puuid' => 'd027af62-c72b-52cc-9a22-ca9d86bb9741',
             'username' => 'annas2111',
             'password' => 'Annas211112345',
             'owner' => 'Annas',
         ]);
 
         Account::create([
-            'riotId' => 'LUHUTFORPRESIDEN',
-            'tagLine' => 'DREAM',
-            'slug' => bcrypt('LUHUTFORPRESIDENDREAM'),
+            'puuid' => 'd950117f-abfc-53ab-a36e-eb76c4431ebf',
             'username' => 'annas2110',
             'password' => 'Annas211012345',
             'owner' => 'Annas',
         ]);
 
         Account::create([
-            'riotId' => 'JOKOWIJAGOAN',
-            'tagLine' => 'MAMAH',
-            'slug' => bcrypt('JOKOWIJAGOANMAMAH'),
+            'puuid' => '95f46f5e-5d39-5ffc-a8c9-0b7ad769d084',
             'username' => 'annas2109',
             'password' => 'Annas210912345',
             'owner' => 'Annas',

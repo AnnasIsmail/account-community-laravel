@@ -48,18 +48,14 @@ class AccountController extends Controller
         try {
             //code...
             $request->validate([
-                'riotId' => 'required',
-                'tagLine' => 'required',
-                'slug' => 'required',
+                'puuid' => 'required',
                 'username' => 'required',
                 'password' => 'required',
                 'owner' => 'required',
             ]);
     
             $account = Account::create([
-                'riotId' => $request->riotId,
-                'tagLine' => $request->tagLine,
-                'slug' => $request->slug,
+                'puuid' => $request->puuid,
                 'username' => $request->username,
                 'password' => $request->password,
                 'owner' => $request->owner,
@@ -90,7 +86,21 @@ class AccountController extends Controller
         }else{
             return ApiFormatter::createApi(400, 'Failed');
         }
+    
     }
+
+    public function showPUUID($puuid)
+    {
+        $data = Account::where('puuid', '=', $puuid)->get();
+
+        if($data){
+            return ApiFormatter::createApi(200, 'Success', $data);
+        }else{
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -115,9 +125,7 @@ class AccountController extends Controller
         try {
             //code...
             $request->validate([
-                'riotId' => 'required',
-                'tagLine' => 'required',
-                'slug' => 'required',
+                'puuid' => 'required',
                 'username' => 'required',
                 'password' => 'required',
                 'owner' => 'required',
@@ -126,9 +134,7 @@ class AccountController extends Controller
             $account = Account::findOrFail($id);
 
             $account->update([
-                'riotId' => $request->riotId,
-                'tagLine' => $request->tagLine,
-                'slug' => $request->slug,
+                'puuid' => $request->puuid,
                 'username' => $request->username,
                 'password' => $request->password,
                 'owner' => $request->owner,

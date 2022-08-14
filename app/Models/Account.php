@@ -11,9 +11,7 @@ class Account extends Model
 
     protected $table = 'accounts';
     protected $fillable = [
-        'riotId',
-        'tagLine',
-        'slug',
+        'puuid',
         'username',
         'password',
         'owner',

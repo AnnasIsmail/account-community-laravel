@@ -23,6 +23,7 @@ Route::post('mahasiswa/store', [MahasiswaController::class , 'store']);
 
 Route::get('account', [AccountController::class , 'index']);
 Route::get('account/{id}', [AccountController::class , 'show']);
+Route::get('account/puuid/{puuid}', [AccountController::class , 'showPUUID']);
 Route::post('account/store', [AccountController::class , 'store']);
 Route::post('account/update/{id}', [AccountController::class , 'update']);
 Route::post('account/delete/{id}', [AccountController::class , 'destroy']);

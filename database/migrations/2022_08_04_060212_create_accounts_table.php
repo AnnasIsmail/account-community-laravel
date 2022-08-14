@@ -15,9 +15,7 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('riotId');
-            $table->string('tagLine');
-            $table->string('slug');
+            $table->string('puuid');
             $table->string('username');
             $table->string('password');
             $table->string('owner');
