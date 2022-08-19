@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Log;
 use App\Models\User;
+use App\Models\Access;
 use App\Models\Account;
-use App\Models\AccountAgent;
 use App\Models\AccountSkin;
+use App\Models\AccountAgent;
 use Illuminate\Database\Seeder;
 
 
@@ -77,6 +79,26 @@ class DatabaseSeeder extends Seeder
             'account_id' => 1,
             'name' => 'Killjoy',
             'uuid' => '1e58de9c-4950-5125-93e9-a0aee9f98746'
+        ]);
+
+        Access::create([
+            'access_code' => 'ans09182',
+            'name' => 'Annas',
+            'role' => 'admin'
+        ]);
+
+        Access::create([
+            'access_code' => 'bty09182',
+            'name' => 'Botay',
+            'role' => 'User'
+        ]);
+
+        Log::create([
+            'access_code' => 'bty09182',
+            'access_name' => 'Botay',
+            'activity' => 'Create Account 1',
+            'ip_address' => '2.10.101.1',
+            'browser' => 'Chrome',
         ]);
 
     }
