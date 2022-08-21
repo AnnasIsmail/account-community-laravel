@@ -16,10 +16,16 @@ class LogController extends Controller
      */
     public function index()
     {
+        $dataReturn = [];
         $data = Log::all();
 
+        foreach ( $data as $d){
+            $d->DateTime = $d->created_at->diffForHumans();
+            array_push($dataReturn ,  $d);
+        }
+
         if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return ApiFormatter::createApi(200, 'Success', $dataReturn);
         }else{
             return ApiFormatter::createApi(400, 'Failed');
         }

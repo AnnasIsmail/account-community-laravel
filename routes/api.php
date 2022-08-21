@@ -40,10 +40,10 @@ Route::post('agent/store', [AccountAgentController::class , 'store']);
 Route::get('agent/{id}', [AccountAgentController::class , 'show']);
 Route::post('agent/delete/{account_id}', [AccountAgentController::class , 'destroy']);
 
-Route::get('access', [AccessController::class , 'index']);
+// Route::get('access', [AccessController::class , 'index']);
 Route::get('access/{access_code}', [AccessController::class , 'show']);
 Route::post('access/store', [AccessController::class , 'store']);
-Route::post('access/delete/{id}', [AccessController::class , 'destroy']);
+// Route::post('access/delete/{id}', [AccessController::class , 'destroy']);
 
 Route::get('log', [LogController::class , 'index']);
 Route::post('log/store', [LogController::class , 'store']);
