@@ -17,7 +17,7 @@ class LogController extends Controller
     public function index()
     {
         $dataReturn = [];
-        $data = Log::all();
+        $data = Log::latest()->get();
 
         foreach ( $data as $d){
             $d->DateTime = $d->created_at->diffForHumans();
