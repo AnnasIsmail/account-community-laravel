@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API;
 
 use App\Models\AccountSkin;
 use Illuminate\Http\Request;
-use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
 use Exception;
 
@@ -21,9 +20,9 @@ class AccountSkinController extends Controller
         $data = AccountSkin::all();
 
         if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return response()->json(['code' => 200,  'message' => 'Success', 'data' => $data]);
         }else{
-            return ApiFormatter::createApi(400, 'Failed');
+            return response()->json(['code' => 400,  'message' => 'Failed' ,'data' => null]);
         }
     }
 
@@ -59,10 +58,10 @@ class AccountSkinController extends Controller
                 'uuid' => $request->uuid,
             ]);
 
-            return ApiFormatter::createApi(200, 'Success', $skin);
+            return response()->json(['code' => 200,  'message' => 'Success', 'data' => $skin]);
 
         } catch (Exception $th) {
-            return ApiFormatter::createApi(400, 'Failed', $th);
+            return response()->json(['code' => 400,  'message' => 'Failed', 'data' => $th]);
         }
 
     }
@@ -78,9 +77,9 @@ class AccountSkinController extends Controller
         $data = AccountSkin::where('account_id', '=', $id)->get();
 
         if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return response()->json(['code' => 200,  'message' => 'Success', 'data' => $data]);
         }else{
-            return ApiFormatter::createApi(400, 'Failed');
+            return response()->json(['code' => 400,  'message' => 'Failed', 'data' => null]);
         }
     }
 
@@ -121,10 +120,10 @@ class AccountSkinController extends Controller
 
             $skin->delete();
 
-            return ApiFormatter::createApi(200, 'Success Delete All Data');
+            return response()->json(['code' => 200,  'message' => 'Success Delete All Data', 'data' => null]);
 
         } catch (Exception $th) {
-            return ApiFormatter::createApi(400, 'Failed', $th);
+            return response()->json(['code' => 400,  'message' => 'Failed',  'data' =>$th]);
         }
     }
 }

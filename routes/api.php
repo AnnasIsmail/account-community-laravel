@@ -20,8 +20,8 @@ use App\Http\Controllers\API\AccountAgentController;
 |
 */
 
-Route::get('mahasiswa', [MahasiswaController::class , 'index']);
-Route::post('mahasiswa/store', [MahasiswaController::class , 'store']);
+// Route::get('mahasiswa', [MahasiswaController::class , 'index']);
+// Route::post('mahasiswa/store', [MahasiswaController::class , 'store']);
 
 Route::get('account', [AccountController::class , 'index']);
 Route::get('account/{id}', [AccountController::class , 'show']);

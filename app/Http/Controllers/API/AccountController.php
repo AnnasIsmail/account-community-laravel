@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Models\Account;
 use App\Models\AccountSkin;
 use Illuminate\Http\Request;
-use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
 
 class AccountController extends Controller
@@ -20,9 +19,9 @@ class AccountController extends Controller
         $data = Account::all();
 
         if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return response()->json(['code' => 200, 'message' => 'Success', 'data' => $data]);
         }else{
-            return ApiFormatter::createApi(400, 'Failed');
+            return response()->json(['code' => 400,'message' => 'Failed' , 'data' => null]);
         }
     }
 
@@ -61,11 +60,11 @@ class AccountController extends Controller
                 'owner' => $request->owner,
             ]);
 
-            return ApiFormatter::createApi(200, 'Success', $account);
+            return response()->json(['code' => 200, 'message' => 'Success', 'data' => $account]);
 
         } catch (\Throwable $th) {
             //throw $th;
-            return ApiFormatter::createApi(400, 'Failed', $th);
+            return response()->json(['code' => 400, 'message' =>  'Failed', 'data' => $th]);
         }
 
 
@@ -82,9 +81,9 @@ class AccountController extends Controller
         $data = Account::where('id', '=', $id)->get();
 
         if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return response()->json(['code' => 200, 'message' =>  'Success', 'data' => $data]);
         }else{
-            return ApiFormatter::createApi(400, 'Failed');
+            return response()->json(['code' => 400,  'message' => 'Failed' ,'data' => null]);
         }
     
     }
@@ -94,9 +93,9 @@ class AccountController extends Controller
         $data = Account::where('puuid', '=', $puuid)->get();
 
         if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return response()->json(['code' => 200,  'message' => 'Success', 'data' => $data]);
         }else{
-            return ApiFormatter::createApi(400, 'Failed');
+            return response()->json(['code' => 400,  'message' => 'Failed' ,'data' => null]);
         }
     
     }
@@ -140,11 +139,11 @@ class AccountController extends Controller
                 'owner' => $request->owner,
             ]);
 
-            return ApiFormatter::createApi(200, 'Success', $account);
+            return response()->json([200, 'Success', $account]);
 
         } catch (\Throwable $th) {
             //throw $th;
-            return ApiFormatter::createApi(400, 'Failed', $th);
+            return response()->json([400, 'Failed', $th]);
         }
     }
 
@@ -163,11 +162,11 @@ class AccountController extends Controller
 
             $account->delete();
 
-            return ApiFormatter::createApi(200, 'Success', $account);
+            return response()->json([200, 'Success', $account]);
 
         } catch (\Throwable $th) {
             //throw $th;
-            return ApiFormatter::createApi(400, 'Failed', $th);
+            return response()->json([400, 'Failed', $th]);
         }
     }
 }

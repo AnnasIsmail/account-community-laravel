@@ -82,22 +82,38 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Access::create([
-            'access_code' => 'ans09182',
+            'access_code' => 'ans!!!',
             'name' => 'Annas',
             'role' => 'admin'
         ]);
 
         Access::create([
-            'access_code' => 'bty09182',
-            'name' => 'Botay',
+            'access_code' => 'ans@@@',
+            'name' => 'Annas',
             'role' => 'User'
         ]);
 
         Log::create([
-            'access_code' => 'bty09182',
-            'access_name' => 'Botay',
+            'access_code' => 'ans@@@',
+            'access_name' => 'Annas',
             'activity' => 'Create Account 1',
-            'ip_address' => '2.10.101.1',
+            'ip_address' => '103.120.169.61',
+            'browser' => 'Chrome',
+        ]);
+
+        Log::create([
+            'access_code' => 'ans@@@',
+            'access_name' => 'Annas',
+            'activity' => 'Create Account 2',
+            'ip_address' => '103.120.169.61',
+            'browser' => 'Chrome',
+        ]);
+
+        Log::create([
+            'access_code' => 'ans@@@',
+            'access_name' => 'Annas',
+            'activity' => 'Create Account 3',
+            'ip_address' => '103.120.169.61',
             'browser' => 'Chrome',
         ]);
 

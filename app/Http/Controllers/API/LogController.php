@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Log;
 use Illuminate\Http\Request;
-use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
 
 class LogController extends Controller
@@ -25,9 +24,9 @@ class LogController extends Controller
         }
 
         if($data){
-            return ApiFormatter::createApi(200, 'Success', $dataReturn);
+            return response()->json(['code' => 200,  'message' => 'Success', 'data' => $dataReturn]);
         }else{
-            return ApiFormatter::createApi(400, 'Failed');
+            return response()->json(['code' => 400,  'message' => 'Failed' ,'data' => null]);
         }
     }
 
@@ -67,11 +66,11 @@ class LogController extends Controller
                 'browser' => $request->browser,
             ]);
 
-            return ApiFormatter::createApi(200, 'Success', $account);
+            return response()->json(['code' => 200,  'message' => 'Success', 'data' => $account]);
 
         } catch (\Throwable $th) {
             //throw $th;
-            return ApiFormatter::createApi(400, 'Failed', $th);
+            return response()->json(['code' => 400,  'message' => 'Failed', 'data' => $th]);
         }
     }
 

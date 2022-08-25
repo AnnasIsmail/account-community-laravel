@@ -19,9 +19,9 @@ class AccessController extends Controller
         $data = Access::all();
 
         if($data){
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return response()->json(['code' => 200,  'message' => 'Success',  'data' => $data]);
         }else{
-            return ApiFormatter::createApi(400, 'Failed');
+            return response()->json(['code' => 400,  'message' => 'Failed' ,'data' => null]);
         }
     }
 
@@ -57,11 +57,11 @@ class AccessController extends Controller
                 'role' => $request->role,
             ]);
 
-            return ApiFormatter::createApi(200, 'Success', $account);
+            return response()->json(['code' => 200,  'message' => 'Success',  'data' =>$account]);
 
         } catch (\Throwable $th) {
             //throw $th;
-            return ApiFormatter::createApi(400, 'Failed', $th);
+            return response()->json(['code' => 400,  'message' => 'Failed',  'data' =>$th]);
         }
     }
 
@@ -76,9 +76,9 @@ class AccessController extends Controller
         $data = Access::where('access_code', '=', $access_code)->get();
 
         if(count($data) !== 0){
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return response()->json(['code' => 200,  'message' => 'Success', 'data' => $data]);
         }else{
-            return ApiFormatter::createApi(400, 'Failed');
+            return response()->json(['code' => 400,  'message' => 'Failed' ,'data' => null]);
         }
     }
 
@@ -120,11 +120,11 @@ class AccessController extends Controller
 
             $account->delete();
 
-            return ApiFormatter::createApi(200, 'Success', $account);
+            return response()->json(['code' => 200,  'message' => 'Success', 'data' => $account]);
 
         } catch (\Throwable $th) {
             //throw $th;
-            return ApiFormatter::createApi(400, 'Failed', $th);
+            return response()->json(['code' => 400,  'message' => 'Failed', 'data' => $th]);
         }
     }
 }
